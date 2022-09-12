@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Test Automation" parallel="tests" thread-count="14">
+
+    <test name="iOS-1">
+
+        <parameter name="executionPlatform" value="Mobile" />
+        <parameter name="platform" value="iOS" />
+        <parameter name="deviceQuery" value="@os='ios' and contains(@name, 'iPhone XR')" />
+        <parameter name="NVProfile" value="4g-average" />
+
+        <classes>
+            <class name="tests.HomePageTests"/>
+        </classes>
+    </test>
+
+    <test name="iOS-2">
+
+        <parameter name="executionPlatform" value="Mobile" />
+        <parameter name="platform" value="iOS" />
+        <parameter name="deviceQuery" value="@os='ios' and contains(@name, 'iPhone XR')" />
+        <parameter name="NVProfile" value="4g-average" />
+
+        <classes>
+            <class name="tests.HomePageTests"/>
+        </classes>
+    </test>
+
+    <test name="iOS-3">
+
+        <parameter name="executionPlatform" value="Mobile" />
+        <parameter name="platform" value="iOS" />
+        <parameter name="deviceQuery" value="@os='ios' and contains(@name, 'iPhone XR')" />
+        <parameter name="NVProfile" value="4g-average" />
+
+        <classes>
+            <class name="tests.HomePageTests"/>
+        </classes>
+    </test>
+
+    <test name="iOS-4">
+
+        <parameter name="executionPlatform" value="Mobile" />
+        <parameter name="platform" value="iOS" />
+        <parameter name="deviceQuery" value="@os='ios' and contains(@name, 'iPhone XR')" />
+        <parameter name="NVProfile" value="4g-average" />
+
+        <classes>
+            <class name="tests.HomePageTests"/>
+        </classes>
+    </test>
+
+    <test name="iOS-5">
+
+        <parameter name="executionPlatform" value="Mobile" />
+        <parameter name="platform" value="iOS" />
+        <parameter name="deviceQuery" value="@os='ios' and contains(@name, 'iPhone XR')" />
+        <parameter name="NVProfile" value="4g-average" />
+
+        <classes>
+            <class name="tests.HomePageTests"/>
+        </classes>
+    </test>
+
+    <test name="Android-1">
+
+        <parameter name="executionPlatform" value="Mobile" />
+        <parameter name="platform" value="Android" />
+        <parameter name="deviceQuery" value="@os='android' and contains(@name, 'Galaxy S20')" />
+        <parameter name="NVProfile" value="4g-average" />
+
+        <classes>
+            <class name="tests.HomePageTests"/>
+        </classes>
+    </test>
+
+    <test name="Android-2">
+
+        <parameter name="executionPlatform" value="Mobile" />
+        <parameter name="platform" value="Android" />
+        <parameter name="deviceQuery" value="@os='android' and contains(@name, 'Galaxy S20')" />
+        <parameter name="NVProfile" value="4g-average" />
+
+        <classes>
+            <class name="tests.HomePageTests"/>
+        </classes>
+    </test>
+
+    <test name="Android-3">
+
+        <parameter name="executionPlatform" value="Mobile" />
+        <parameter name="platform" value="Android" />
+        <parameter name="deviceQuery" value="@os='android' and contains(@name, 'Galaxy S20')" />
+        <parameter name="NVProfile" value="4g-average" />
+
+        <classes>
+            <class name="tests.HomePageTests"/>
+        </classes>
+    </test>
+
+    <test name="Android-4">
+
+        <parameter name="executionPlatform" value="Mobile" />
+        <parameter name="platform" value="Android" />
+        <parameter name="deviceQuery" value="@os='android' and contains(@name, 'Galaxy S20')" />
+        <parameter name="NVProfile" value="4g-average" />
+
+        <classes>
+            <class name="tests.HomePageTests"/>
+        </classes>
+    </test>
+
+    <test name="Android-5">
+
+        <parameter name="executionPlatform" value="Mobile" />
+        <parameter name="platform" value="Android" />
+        <parameter name="deviceQuery" value="@os='android' and contains(@name, 'Galaxy S20')" />
+        <parameter name="NVProfile" value="4g-average" />
+
+        <classes>
+            <class name="tests.HomePageTests"/>
+        </classes>
+    </test>
+
+    <test name="Web-1">
+
+        <parameter name="executionPlatform" value="Web" />
+        <parameter name="platform" value="Chrome" />
+
+        <classes>
+            <class name="tests.HomePageTests"/>
+        </classes>
+    </test>
+
+    <test name="Web-2">
+
+        <parameter name="executionPlatform" value="Web" />
+        <parameter name="platform" value="MicrosoftEdge" />
+
+        <classes>
+            <class name="tests.HomePageTests"/>
+        </classes>
+    </test>
+
+    <test name="Web-3">
+
+        <parameter name="executionPlatform" value="Web" />
+        <parameter name="platform" value="Firefox" />
+
+        <classes>
+            <class name="tests.HomePageTests"/>
+        </classes>
+    </test>
+
+    <test name="Web-4">
+
+        <parameter name="executionPlatform" value="Web" />
+        <parameter name="platform" value="Safari" />
+
+        <classes>
+            <class name="tests.HomePageTests"/>
+        </classes>
+    </test>
+
+</suite>
