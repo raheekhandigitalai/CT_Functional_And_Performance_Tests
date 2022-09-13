@@ -162,4 +162,44 @@
         </classes>
     </test>
 
+    <test name="Web-5">
+
+        <parameter name="executionPlatform" value="Web" />
+        <parameter name="platform" value="Chrome" />
+
+        <classes>
+            <class name="tests.HomePageTests"/>
+        </classes>
+    </test>
+
+    <test name="Web-6">
+
+        <parameter name="executionPlatform" value="Web" />
+        <parameter name="platform" value="MicrosoftEdge" />
+
+        <classes>
+            <class name="tests.HomePageTests"/>
+        </classes>
+    </test>
+
+    <test name="Web-7">
+
+        <parameter name="executionPlatform" value="Web" />
+        <parameter name="platform" value="Firefox" />
+
+        <classes>
+            <class name="tests.HomePageTests"/>
+        </classes>
+    </test>
+
+    <test name="Web-8">
+
+        <parameter name="executionPlatform" value="Web" />
+        <parameter name="platform" value="Safari" />
+
+        <classes>
+            <class name="tests.HomePageTests"/>
+        </classes>
+    </test>
+
 </suite>

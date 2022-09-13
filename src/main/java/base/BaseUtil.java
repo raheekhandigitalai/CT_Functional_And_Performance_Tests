@@ -28,11 +28,12 @@ public class BaseUtil {
     @Parameters({"executionPlatform", "platform", "deviceQuery"})
     public void setUp(String executionPlatform, String platform, @Optional String deviceQuery, @Optional Method method) throws MalformedURLException {
 
+        desiredCapabilities.setCapability("experitest:QA_Build", getQaBuild());
+        desiredCapabilities.setCapability("experitest:testName", getQaBuild() + " - " + method.getName());
+        desiredCapabilities.setCapability("experitest:accessKey", new PropertiesReader().getProperty("seetest.accessKey"));
+
         if (executionPlatform.equalsIgnoreCase("Mobile")) {
 
-            desiredCapabilities.setCapability("QA_Build", getQaBuild());
-            desiredCapabilities.setCapability("testName", getQaBuild() + " - " + method.getName());
-            desiredCapabilities.setCapability("accessKey", new PropertiesReader().getProperty("seetest.accessKey"));
             desiredCapabilities.setCapability("appiumVersion", "1.22.2");
 
             if (platform.equalsIgnoreCase("iOS")) {
@@ -56,9 +57,6 @@ public class BaseUtil {
 
         } else if (executionPlatform.equalsIgnoreCase("Web")) {
 
-            desiredCapabilities.setCapability("experitest:QA_Build", getQaBuild());
-            desiredCapabilities.setCapability("experitest:testName", getQaBuild() + " - " + method.getName());
-            desiredCapabilities.setCapability("experitest:accessKey", new PropertiesReader().getProperty("seetest.accessKey"));
             desiredCapabilities.setCapability("experitest:useNV", true);
 
             if (platform.equalsIgnoreCase("Chrome")) {
