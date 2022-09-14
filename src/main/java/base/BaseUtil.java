@@ -21,8 +21,12 @@ import java.net.URL;
 public class BaseUtil {
 
     protected DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
-    protected RemoteWebDriver driver = null;
+    protected ThreadLocal<RemoteWebDriver> driver = new ThreadLocal<RemoteWebDriver>();
     protected PerformanceTransactions performanceTransactions;
+
+    public RemoteWebDriver getDriver() {
+        return driver.get();
+    }
 
     @BeforeMethod
     @Parameters({"executionPlatform", "platform", "deviceQuery"})
@@ -43,7 +47,7 @@ public class BaseUtil {
                 desiredCapabilities.setCapability("deviceQuery", deviceQuery);
                 desiredCapabilities.setCapability("autoAcceptAlerts", true);
                 desiredCapabilities.setBrowserName(MobileBrowserType.SAFARI);
-                driver = new IOSDriver(new URL(new PropertiesReader().getProperty("seetest.cloudURL")), desiredCapabilities);
+                driver.set(new IOSDriver(new URL(new PropertiesReader().getProperty("seetest.cloudURL")), desiredCapabilities));
 
             } else if (platform.equalsIgnoreCase("Android")) {
 
@@ -51,7 +55,7 @@ public class BaseUtil {
                 desiredCapabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, Platform.ANDROID);
                 desiredCapabilities.setCapability("deviceQuery", deviceQuery);
                 desiredCapabilities.setBrowserName(MobileBrowserType.CHROME);
-                driver = new AndroidDriver(new URL(new PropertiesReader().getProperty("seetest.cloudURL")), desiredCapabilities);
+                driver.set(new AndroidDriver(new URL(new PropertiesReader().getProperty("seetest.cloudURL")), desiredCapabilities));
 
             }
 
@@ -69,23 +73,24 @@ public class BaseUtil {
                 desiredCapabilities.setCapability(CapabilityType.BROWSER_NAME, "safari");
             }
 
-            driver = new RemoteWebDriver(new URL(new PropertiesReader().getProperty("seetest.cloudURL")), desiredCapabilities);
+            driver.set(new RemoteWebDriver(new URL(new PropertiesReader().getProperty("seetest.cloudURL")), desiredCapabilities));
 
         }
 
         if (platform.equalsIgnoreCase("iOS")) {
-            performanceTransactions = new PerformanceTransactions((IOSDriver) driver);
+            performanceTransactions = new PerformanceTransactions((IOSDriver) getDriver());
         } else if (platform.equalsIgnoreCase("Android")) {
-            performanceTransactions = new PerformanceTransactions((AndroidDriver) driver);
+            performanceTransactions = new PerformanceTransactions((AndroidDriver) getDriver());
         } else {
-            performanceTransactions = new PerformanceTransactions(driver);
+            performanceTransactions = new PerformanceTransactions(getDriver());
         }
 
     }
 
     @AfterMethod(alwaysRun = true)
     public void tearDown() {
-        driver.quit();
+        getDriver().quit();
+        driver.remove();
     }
 
 //    @AfterClass

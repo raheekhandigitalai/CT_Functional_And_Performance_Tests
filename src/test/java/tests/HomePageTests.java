@@ -30,13 +30,14 @@ public class HomePageTests extends BaseUtil {
 
     @BeforeMethod
     public void setUpPriorToTest() {
-        pageObject = new PageObject(driver);
-        homePage = new HomePage(driver);
-        navigationBarPage = new NavigationBarPage(driver);
+        pageObject = new PageObject(getDriver());
+        homePage = new HomePage(getDriver());
+        navigationBarPage = new NavigationBarPage(getDriver());
 
         executionPlatform = pageObject.getParameterFromXMLFile("executionPlatform");
         platform = pageObject.getParameterFromXMLFile("platform");
     }
+
     @Test
     @Parameters({"NVProfile"})
     public void searchItemResponsiveness(@Optional String NVProfile) {

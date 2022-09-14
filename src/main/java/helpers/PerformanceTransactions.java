@@ -52,7 +52,7 @@ public class PerformanceTransactions {
 
     }
 
-    public void startPerformanceTransactionForWeb() {
+    public void startPerformanceTransaction() {
         driver.executeScript("seetest:client.startPerformanceTransaction(\"" + getQaBuild() + "\")");
     }
 
