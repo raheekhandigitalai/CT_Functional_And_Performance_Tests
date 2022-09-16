@@ -11,6 +11,7 @@ import org.openqa.selenium.Platform;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.testng.ITestResult;
 import org.testng.annotations.*;
 
 import java.lang.reflect.Method;
@@ -37,7 +38,7 @@ public class BaseUtil {
         desiredCapabilities.setCapability("experitest:accessKey", System.getenv("ACCESS_KEY"));
         desiredCapabilities.setCapability("experitest:QA_Build", System.getenv("QA_BUILD"));
         desiredCapabilities.setCapability("Jenkins_Build_Number", System.getenv("BUILD_NUMBER"));
-        desiredCapabilities.setCapability("experitest:testName", getQaBuild() + " - " + method.getName());
+        desiredCapabilities.setCapability("experitest:testName", System.getenv("QA_BUILD") + " - " + method.getName());
 
         if (executionPlatform.equalsIgnoreCase("Mobile")) {
 
@@ -91,7 +92,14 @@ public class BaseUtil {
     }
 
     @AfterMethod(alwaysRun = true)
-    public void tearDown() {
+    public void tearDown(ITestResult result) {
+
+        if (result.getStatus() == ITestResult.SUCCESS) {
+            getDriver().executeScript("seetest:client.setReportStatus(\"Passed\", \"Test Passed\")");
+        } else if (result.getStatus() == ITestResult.FAILURE) {
+            getDriver().executeScript("seetest:client.setReportStatus(\"Failed\", \"Test Failed\")");
+        }
+
         getDriver().quit();
         driver.remove();
     }
