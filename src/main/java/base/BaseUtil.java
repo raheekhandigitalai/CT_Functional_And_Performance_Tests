@@ -32,9 +32,12 @@ public class BaseUtil {
     @Parameters({"executionPlatform", "platform", "deviceQuery"})
     public void setUp(String executionPlatform, String platform, @Optional String deviceQuery, @Optional Method method) throws MalformedURLException {
 
-        desiredCapabilities.setCapability("experitest:QA_Build", getQaBuild());
+//        desiredCapabilities.setCapability("experitest:accessKey", new PropertiesReader().getProperty("seetest.accessKey"));
+//        desiredCapabilities.setCapability("experitest:QA_Build", getQaBuild());
+        desiredCapabilities.setCapability("experitest:accessKey", System.getenv("ACCESS_KEY"));
+        desiredCapabilities.setCapability("experitest:QA_Build", System.getenv("QA_BUILD"));
+        desiredCapabilities.setCapability("Jenkins_Build_Number", System.getenv("BUILD_NUMBER"));
         desiredCapabilities.setCapability("experitest:testName", getQaBuild() + " - " + method.getName());
-        desiredCapabilities.setCapability("experitest:accessKey", new PropertiesReader().getProperty("seetest.accessKey"));
 
         if (executionPlatform.equalsIgnoreCase("Mobile")) {
 
