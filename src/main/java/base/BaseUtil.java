@@ -42,7 +42,7 @@ public class BaseUtil {
 
         if (executionPlatform.equalsIgnoreCase("Mobile")) {
 
-            dc.setCapability("newCommandTimeout", 120);
+            desiredCapabilities.setCapability("newCommandTimeout", 120);
             desiredCapabilities.setCapability("appiumVersion", "1.22.2");
 
             if (platform.equalsIgnoreCase("iOS")) {
