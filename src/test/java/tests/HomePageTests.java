@@ -63,7 +63,7 @@ public class HomePageTests extends BaseUtil {
         navigationBarPage.clickOnEnterButton();
         navigationBarPage.verifyResultsAppearingAfterSearch();
 
-        performanceTransactions.endPerformanceTransaction(getQaBuild() + " - Search Item Responsiveness");
+        performanceTransactions.endPerformanceTransaction(System.getenv("QA_BUILD") + " - Search Item Responsiveness");
     }
 
 }
